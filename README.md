@@ -1,0 +1,117 @@
+# Image Captioning with BLIP
+
+A FastAPI-based web application that generates captions, titles, and tags for images using the BLIP (Bootstrapping Language-Image Pre-training) model.
+
+## Features
+
+- Upload images through a web interface
+- Generate detailed image captions
+- Extract relevant tags
+- Create concise titles
+- Real-time processing
+- Modern, responsive UI
+
+## Prerequisites
+
+- Python 3.9+
+- Conda (recommended) or virtualenv
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd <repo-directory>
+```
+
+2. Create and activate a Conda environment:
+```bash
+conda create -n image-captioning python=3.9
+conda activate image-captioning
+```
+
+3. Install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+## Running the Application
+
+1. Start the FastAPI server:
+```bash
+python run.py
+```
+
+2. Open your web browser and navigate to:
+```
+http://localhost:8000
+```
+
+## Project Structure
+
+```
+.
+├── backend/
+│   ├── __init__.py
+│   ├── main.py
+│   └── image_processor.py
+├── frontend/
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+├── requirements.txt
+├── run.py
+└── README.md
+```
+
+## API Endpoints
+
+- `POST /analyze-image`: Upload and process an image
+  - Input: Form data with image file
+  - Output: JSON with title, description, and tags
+
+## Environment Variables
+
+No environment variables are required for basic functionality. The application automatically detects if CUDA is available and uses CPU if it's not.
+
+## Model Information
+
+The application uses BLIP (Bootstrapping Language-Image Pre-training) for image captioning:
+- Default model: "Salesforce/blip-image-captioning-large"
+- Alternative models available:
+  - "Salesforce/blip2-opt-2.7b"
+  - "Salesforce/blip2-flan-t5-xl"
+  - "Salesforce/blip2-opt-6.7b"
+
+## Dependencies
+
+Major dependencies include:
+- FastAPI
+- Torch
+- Transformers
+- Pillow
+- NLTK
+- uvicorn
+
+See `requirements.txt` for complete list.
+
+## Development
+
+To run the application in development mode with auto-reload:
+```bash
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+## Troubleshooting
+
+1. If you encounter CUDA errors:
+   - The application will automatically fall back to CPU
+   - Ensure you have the correct torch version installed
+
+2. If you get import errors:
+   - Ensure you're in the correct conda environment
+   - Try reinstalling dependencies: `pip install -r requirements.txt`
+
+## License
+
+[Your chosen license] 
